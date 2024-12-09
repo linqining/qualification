@@ -54,7 +54,7 @@ fun init(otw: CFA,ctx:&mut TxContext){
 
 
 
-entry fun mint(name:String,image_url:String,description:String,recipient:address, ctx: &mut TxContext) {
+entry fun mint(_:&GrantCap,name:String,image_url:String,description:String,recipient:address, ctx: &mut TxContext) {
     let cfa = CFACertificate {
         id: object::new(ctx),
         qualifier_name:name,
