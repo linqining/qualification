@@ -21,7 +21,6 @@ public struct CFA has drop {
 }
 
 fun init(otw: CFA,ctx:&mut TxContext){
-
     let keys = vector[
         b"logo".to_string(),
         b"qualifier_name".to_string(),
@@ -29,6 +28,7 @@ fun init(otw: CFA,ctx:&mut TxContext){
         b"description".to_string(),
         b"project_url".to_string(),
         b"issuer".to_string(),
+        b"image_url".to_string(),
     ];
     let values = vector[
         b"{https://www.cfainstitute.org/themes/custom/cfa_base/logo.svg}".to_string(),
@@ -37,6 +37,7 @@ fun init(otw: CFA,ctx:&mut TxContext){
         b"{description}".to_string(),
         b"https://www.cfainstitute.org/".to_string(),
         b"{issuer}".to_string(),
+        b"https://seeklogo.com/images/C/cfa-institute-logo-8013C61264-seeklogo.com.png".to_string(),
     ];
 
     let publisher = package::claim(otw, ctx);
