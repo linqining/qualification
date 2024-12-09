@@ -3,6 +3,7 @@ module qualification::cfa;
 use std::string::String;
 use sui::package;
 use sui::display;
+use sui::event;
 
 public struct CFACertificate has key,store{
     id: UID,
@@ -15,6 +16,10 @@ public struct CFACertificate has key,store{
 // 授权能力
 public struct GrantCap has key{
     id:UID,
+}
+
+public struct GrantEvent has copy,drop{
+    qualifier_address: address
 }
 
 public struct CFA has drop {
@@ -64,4 +69,7 @@ entry fun mint(_:&GrantCap,name:String,image_url:String,description:String,recip
         description:description,
     };
     transfer::public_transfer(cfa, recipient);
+    event::emit(GrantEvent {
+        qualifier_address:recipient,
+    });
 }
